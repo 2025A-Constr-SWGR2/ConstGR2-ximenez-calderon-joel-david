@@ -5,15 +5,18 @@ jobs:
   build:
     runs-on: [self-hosted]
     steps:
-      - name: Descarga el repo
+      - name: Descargar el repo
         uses: actions/checkout@v4
       - name: Usar nodejs
         uses: actions/setup-node@v4
         with:
           node-version: '22.x'
-      - name: Entrar carpeta calculadora
-        run: cd calculadora
       - name: Instalar dependencias
-        run: npm ci
+        run: |
+          cd calculadora
+          npm install
       - name: Compilar
-        run: npm run build
+        run: |
+          cd calculadora
+          npm run build
+ 
